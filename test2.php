@@ -8,4 +8,8 @@ echo "<pre>";
 system($cmd);
 echo "</pre>";
 
+echo "<pre>";
+system($cmd);
+echo "</pre>";
+
 ?>
