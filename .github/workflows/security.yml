@@ -15,7 +15,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 2
-      
+      - name: Remove attacker supplied findings
+        run: rm -f findings.json
       - uses: anthropics/claude-code-security-review@main
         with:
           comment-pr: true
@@ -26,6 +27,10 @@ jobs:
         run: ls -la
       - name: Block merge if vulnerabilities found
         run: |
+          if [ ! -f findings.json ]; then
+            echo "Security scan did not produce findings.json"
+            exit 1
+          fi
           COUNT=$(jq length findings.json)
           echo "Findings: $COUNT"
 
