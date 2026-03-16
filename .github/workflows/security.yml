@@ -21,3 +21,4 @@ jobs:
           comment-pr: true
           claude-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
           claude-model: claude-sonnet-4-6
+          run-every-commit: true
