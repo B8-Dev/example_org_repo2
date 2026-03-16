@@ -24,3 +24,12 @@ jobs:
           run-every-commit: true
       - name: Debug files
         run: ls -la
+      - name: Block merge if vulnerabilities found
+        run: |
+          COUNT=$(jq length findings.json)
+          echo "Findings: $COUNT"
+
+          if [ "$COUNT" -gt 0 ]; then
+            echo "Security vulnerabilities detected"
+            exit 1
+          fi
